@@ -1,0 +1,75 @@
+
+form{
+    background-color: rgba(0, 0, 0, 0.466);
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;   
+    
+}
+input{
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.158);
+    margin: 5% 0%;
+    border: none;
+    border-bottom: 3px solid white;
+    color: white;
+}
+::placeholder{
+    color: white;
+}
+select{
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.116);;
+    width: 80%;
+    padding: 2% 0%;
+    color: white;
+}
+h1{
+    color: white;
+    text-align: center;
+}
+.boton{
+    margin-top: 10%;
+    font-size: 70%;
+    color: white;
+    padding: 8% 0%;
+    width: 100%;
+    background-color: rgb(44, 44, 44);
+    border: none;
+}
+.boton:hover{
+    color: black;
+    background-color: yellow;
+}
+label{
+    
+    color: white;
+}
+ul {
+    
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: rgb(207, 207, 207);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    color: white;
+  }
+  .agregar{
+    float: right;
+  }

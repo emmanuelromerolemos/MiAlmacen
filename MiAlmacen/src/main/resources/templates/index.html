@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>MiAlmacen</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!--LINK A PHP CON BUSQUEDA-->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#Productos").autocomplete({
+				source: "nombresProductosAutocomplete", 
+				minLength: 4,
+				select: function(event, ui) {
+					this.value = ui.item.label;
+					$("#Plant_ID").val(ui.item.value);
+					return false;
+				}
+			});
+
+		});
+	</script>
+
+  <!-- Custom styles for this template -->
+  <link href="css/shop-homepage.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="vendor/jquery/js.js"></script>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">MiAlmacen</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-11">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-4">
+            <!--"col-lg-4 col-md-6 mb-4"-->
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Bebidas</a>
+                </h4>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Lista de Productos</label>
+                  <select class="form-control" id="bebida1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </div>
+                <button id="adicionar" onClick="agregar(bebida1.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+							</div>
+              <div class="card-footer">
+              <input type="text" name="srch" id="bebida2" list="datalist1" autocomplete="off" >
+						<datalist id="datalist1">
+						<option th:each="producto : ${producto}"  th:value=" ${producto.nombre}">
+						</option>
+						</datalist>
+				</input>
+        <button id="adicionar" onClick="agregar(bebida2.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Carniceria</a>
+                </h4>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Lista de Productos</label>
+                  <select class="form-control" id="carniceria1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </div>
+                <button id="adicionar" onClick="agregar(carniceria1.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+							</div>
+              <div class="card-footer">
+              <input type="text" name="srch" id="carniceria2" list="datalist1" autocomplete="off" >
+						<datalist id="datalist1">
+						<option th:each="producto : ${producto}"  th:value=" ${producto.nombre}">
+						</option>
+						</datalist>
+				</input>
+        <button id="adicionar" onClick="agregar(carniceria2.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Conservas</a>
+                </h4>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Lista de Productos</label>
+                  <select class="form-control" id="conservas1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </div>
+                <button id="adicionar" onClick="agregar(conservas1.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+							</div>
+              <div class="card-footer">
+              <input type="text" name="srch" id="conservas2" list="datalist1" autocomplete="off" >
+						<datalist id="datalist1">
+						<option th:each="producto : ${producto}"  th:value=" ${producto.nombre}">
+						</option>
+						</datalist>
+				</input>
+        <button id="adicionar" onClick="agregar(conservas2.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Fiambreria</a>
+                </h4>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Lista de Productos</label>
+                  <select class="form-control" id="fiambreria1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </div>
+                <button id="adicionar" onClick="agregar(fiambreria1.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+							</div>
+              <div class="card-footer">
+              <input type="text" name="srch" id="fiambreria2" list="datalist1" autocomplete="off" >
+						<datalist id="datalist1">
+						<option th:each="producto : ${producto}"  th:value=" ${producto.nombre}">
+						</option>
+						</datalist>
+				</input>
+        <button id="adicionar" onClick="agregar(fiambreria2.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Golosinas</a>
+                </h4>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Lista de Productos</label>
+                  <select class="form-control" id="golosinas1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </div>
+                <button id="adicionar" onClick="agregar(golosinas1.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+							</div>
+              <div class="card-footer">
+              <input type="text" name="srch" id="golosinas2" list="datalist1" autocomplete="off" >
+						<datalist id="datalist1">
+						<option th:each="producto : ${producto}"  th:value=" ${producto.nombre}">
+						</option>
+						</datalist>
+				</input>
+        <button id="adicionar" onClick="agregar(golosinas2.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Lacteos</a>
+                </h4>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Lista de Productos</label>
+                  <select class="form-control" id="lacteos1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </div>
+                <button id="adicionar" onClick="agregar(lacteos1.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+							</div>
+              <div class="card-footer">
+              <input type="text" name="srch" id="lacteos2" list="datalist1" autocomplete="off" >
+						<datalist id="datalist1">
+						<option th:each="producto : ${producto}"  th:value=" ${producto.nombre}">
+						</option>
+						</datalist>
+				</input>
+        <button id="adicionar" onClick="agregar(lacteos2.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Limpieza</a>
+                </h4>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Lista de Productos</label>
+                  <select class="form-control" id="limpieza1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </div>
+                <button id="adicionar" onClick="agregar(limpieza1.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+							</div>
+              <div class="card-footer">
+              <input type="text" name="srch" id="limpieza2" list="datalist1" autocomplete="off" >
+						<datalist id="datalist1">
+						<option th:each="producto : ${producto}"  th:value=" ${producto.nombre}">
+						</option>
+						</datalist>
+				</input>
+        <button id="adicionar" onClick="agregar(limpieza2.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Panificados</a>
+                </h4>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Lista de Productos</label>
+                  <select class="form-control" id="panificados1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </div>
+                <button id="adicionar" onClick="agregar(panificados1.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+							</div>
+              <div class="card-footer">
+              <input type="text" name="srch" id="panificados2" list="datalist1" autocomplete="off" >
+						<datalist id="datalist1">
+						<option th:each="producto : ${producto}"  th:value=" ${producto.nombre}">
+						</option>
+						</datalist>
+				</input>
+        <button id="adicionar" onClick="agregar(panificados2.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Snacks</a>
+                </h4>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Lista de Productos</label>
+                  <select class="form-control" id="snacks1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </div>
+                <button id="adicionar" onClick="agregar(snacks1.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+							</div>
+              <div class="card-footer">
+              <input type="text" name="srch" id="snacks2" list="datalist1" autocomplete="off" >
+						<datalist id="datalist1">
+						<option th:each="producto : ${producto}"  th:value=" ${producto.nombre}">
+						</option>
+						</datalist>
+				</input>
+        <button id="adicionar" onClick="agregar(snacks2.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Verduleria</a>
+                </h4>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Lista de Productos</label>
+                  <select class="form-control" id="verduleria1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </div>
+                <button id="adicionar" onClick="agregar(verduleria1.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+							</div>
+              <div class="card-footer">
+              <input type="text" name="srch" id="verduleria2" list="datalist1" autocomplete="off" >
+						<datalist id="datalist1">
+						<option th:each="producto : ${producto}"  th:value=" ${producto.nombre}">
+						</option>
+						</datalist>
+				</input>
+        <button id="adicionar" onClick="agregar(verduleria2.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Helados</a>
+                </h4>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Lista de Productos</label>
+                  <select class="form-control" id="helados1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </div>
+                <button id="adicionar" onClick="agregar(helados1.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+							</div>
+              <div class="card-footer">
+              <input type="text" name="srch" id="helados2" list="datalist1" autocomplete="off" >
+						<datalist id="datalist1">
+						<option th:each="producto : ${producto}"  th:value=" ${producto.nombre}">
+						</option>
+						</datalist>
+				</input>
+        <button id="adicionar" onClick="agregar(helados2.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Otros</a>
+                </h4>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Lista de Productos</label>
+                  <select class="form-control" id="otros1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select>
+                </div>
+                <button id="adicionar" onClick="agregar(otros1.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+							</div>
+              <div class="card-footer">
+              <input type="text" name="srch" id="otros2" list="datalist1" autocomplete="off" >
+						<datalist id="datalist1">
+						<option th:each="producto : ${producto}"  th:value=" ${producto.nombre}">
+						</option>
+						</datalist>
+				</input>
+        <button id="adicionar" onClick="agregar(otros2.id)" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+   
+
+        </div>
+
+        <!-- /.row -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+      <div class="col-lg-1"> 
+
+        <h1 class="my-4">VENTA</h1>
+        <table  id="mytable" class="table table-bordered table-hover ">
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Eliminar</th>
+          </tr>
+        </table>
+        <div class="row">
+          <button id="adicionar"  class="btn btn-success" type="button">GUARDAR</button>
+        </div>
+      </div>
+      <!-- /.col-lg-3 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ 
+
+</body>
+
+</html>

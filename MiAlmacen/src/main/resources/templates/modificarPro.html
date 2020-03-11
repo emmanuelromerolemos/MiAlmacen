@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/guardarPro.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+        <style>
+        body{
+            background-image: url(img/2.jpg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            font-family: 'Quicksand';
+            margin: 0% 0%;
+        }
+        </style>
+</head>
+    <body>
+        <header>
+        <ul>
+            <li><a href="/" >Mi almacen</a></li>
+            <li class="agregar"><a th:href="@{/adminProducto}">Volver</a></li>
+        </ul>
+       </header>
+    <h1>Modificar Producto</h1>
+    <section>
+        <form action="#" th:action="@{/modificado(id=${idProducto})}" method="post">
+            <p th:text="${mensajeError}" style="color: white" ></p>
+            <input type="text" placeholder="NOMBRE" name="nombre" th:value="${nombre}"><br>
+            <input type="text" placeholder="PRECIO" name="precio" th:value="${precio}"><br>
+            <label for="aut">CATEGORIA</label><br>
+            <select name="idCategoria" id="aut">
+                <option th:each="categoria:${listaCategoria}" th:value="${categoria.id}" th:text="${categoria.nombre}"></option>
+            </select><br>                      
+            <button type="submit" class="boton">GUARDAR</button>
+        </form>
+    </section>
+    
+</body>
+</html>
